@@ -41,7 +41,7 @@ function add_to_play_list(user,callback){ //Require Data: UserID, VideoID, Video
 
 
 /**
-* Get list of songs in the favourite list
+* Get list of songs in the favourite list.
 * Require Data: UserID
 * @param {string} user - Gets userID
 * @param {function} callback - return an object
