@@ -478,6 +478,6 @@ app.get('/ranking', function(req, res) {
     });
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log(`server up on http://localhost:${port}`);
 });
