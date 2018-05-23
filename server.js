@@ -3,7 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const hbs = require('hbs'); // This will render .hbs files
 const bodyParser = require('body-parser');
-var sessions = require('express-session'); //session for users
+var sessions = require('cookie-session'); //session for users
 const alert = require('alert-node'); // use to alert users
 var swal = require('sweetalert2');
 const login = require('./login.js');
@@ -36,15 +36,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(sessions({
-    cookie:{
-        secure: true,
-        maxAge:60000
-    },
-    secret: '4334@#$!rfgy89o$#nbgr$%43234+_56jh*&gfd3',
-    resave: true,
-    saveUninitialized: true
-}));
+  name: 'session',
+  keys: ['#Xw4c6%&^Z45&678v6b890nuikljS'],
 
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 app.get('/', function(req, res) {
     res.render('index.hbs', {
         info: info,
@@ -101,7 +98,7 @@ app.post('/rating', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
-    req.session.destroy();
+    req.session = null
     res.render('login.hbs');
 });
 
@@ -189,7 +186,7 @@ app.post('/login', function(req, res) {
                 }, 750);
             });
             app.get('/signout', function(req, res) {
-                req.session.destroy();
+                req.session = null
                 // res.redirect('/');
                 res.render('index.hbs', {
                     info: {
