@@ -65,12 +65,12 @@ function login(user, callback) {
                 } else {
                     console.log("password not match");
                     // alert('Incorrect Password');
-                    callback("P", {});
+                    callback(undefined, {});
                 }
             } else {
                 console.log("email does not exist")
                 // alert("Invaild Password");
-                callback("E", {});
+                callback(undefined, {});
             }
         }
     });
