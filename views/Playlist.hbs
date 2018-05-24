@@ -38,7 +38,7 @@
                 <div class="modal-content" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;">
                     <span class="close">&times;</span>
                     <span style="position: absolute; top:1%; right: -5%; z-index: 100000;">
-                        <form action='/delete' method='post' name='delete'>
+                        <form action='/delete{{info.uid}}' method='post' name='delete'>
                             <input id='delvid' type="hidden" value="" name="vid">
                             <input id='uid' type= 'hidden' value="{{info.uid}}" name="uid">
                             <button id='deletesong' type="submit" onclick='swal({text: "Song Removed From Playlist", icon: "success", button:false})'class="btn btn-default btn-sm">
