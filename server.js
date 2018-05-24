@@ -128,7 +128,7 @@ app.post('/login', function(req, res) {
                 uid: `${results.data[0].id}`
             };
             req.session.user = results.data[0].id;
-            app.post('/delete', function(req,res) {
+            app.post(`/delete${results.data[0].id}` function(req,res) {
                  if (!req.session.user) {
                     return res.status(401).send();
                 }
